@@ -1,5 +1,7 @@
 # mPFC-analysis
 
+![Maze schematic](maze-figure.png)
+
 ## Overview of scripts
 **analyzeBehavior.ipynb**: main script to analyze behavioral data for the cue-reward association task. Primary plots consist of: trial accuracy by training day, arm selection over time, and trial accuracy by cue type.
 
