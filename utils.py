@@ -80,7 +80,7 @@ def get_accuracy_by_cue(data, animal):
     return accuracy
 
 
-def plot_accuracy(data, animal, ndays=None, title='[set title]', fig=None, ax=None):
+def plot_accuracy(data, animal, ndays=None, title='[set title]', background='w', fig=None, ax=None):
     """
     Generates plots with animal accuracy over training days.
 
@@ -122,12 +122,13 @@ def plot_accuracy(data, animal, ndays=None, title='[set title]', fig=None, ax=No
     
     ax.axhline(y = 80, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
     ax.yaxis.grid(True)
+    ax.set_facecolor(background)
     
     plt.plot(data, color=cscheme[animal], linewidth=4, marker='o', markersize=10, label=animal)
     ax.legend(loc=4, fontsize=30, framealpha=1)
    
     
-def plot_accuracy_by_cue(data_by_cue, animal, cues, ndays, ax=None):
+def plot_accuracy_by_cue(data_by_cue, animal, cues, ndays, background='w', fig=None, ax=None):
     """
     Plots accuracy by cue type, either individually or in multiple subplots.
 
@@ -160,6 +161,7 @@ def plot_accuracy_by_cue(data_by_cue, animal, cues, ndays, ax=None):
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.0f%%')) # format the accuracy on the y-axis
     ax.axhline(y = 80, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
     ax.yaxis.grid(True)
+    ax.set_facecolor(background)
     
     for cue in cues:
         ax.plot(data_by_cue.loc[:, cue], color=cscheme[cue], linewidth=3, marker='o', markersize=8, label=cue)
