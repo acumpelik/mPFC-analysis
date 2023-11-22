@@ -120,12 +120,12 @@ def plot_accuracy(data, animal, ndays=None, title='[set title]', background='w',
     ax.xaxis.set_major_locator(mtick.MultipleLocator(1)) # show each training day on the x-axis
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.0f%%')) # format the accuracy on the y-axis
     
-    ax.axhline(y = 80, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
+    ax.axhline(y = 1/7*100, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
     ax.yaxis.grid(True)
     ax.set_facecolor(background)
     
     plt.plot(data, color=cscheme[animal], linewidth=4, marker='o', markersize=10, label=animal)
-    ax.legend(loc=4, fontsize=30, framealpha=1)
+    ax.legend(loc=2, fontsize=30, framealpha=1)
    
     
 def plot_accuracy_by_cue(data_by_cue, animal, cues, ndays, background='w', fig=None, ax=None):
@@ -159,7 +159,7 @@ def plot_accuracy_by_cue(data_by_cue, animal, cues, ndays, background='w', fig=N
     ax.tick_params(labelsize=30)
     ax.xaxis.set_major_locator(mtick.MultipleLocator(1)) # show each training day on the x-axis
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.0f%%')) # format the accuracy on the y-axis
-    ax.axhline(y = 80, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
+    ax.axhline(y = 1/7*100, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
     ax.yaxis.grid(True)
     ax.set_facecolor(background)
     
