@@ -3,8 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import datetime
+import supplemental_data
 
-from supplemental_data import cscheme
+from supplemental_data import cscheme, rule_change
 
 def import_data(datadir, animal):
     """
@@ -80,7 +81,7 @@ def get_accuracy_by_cue(data, animal):
     return accuracy
 
 
-def plot_accuracy(data, animal, ndays=None, title='[set title]', background='w', fig=None, ax=None):
+def plot_accuracy(data, animal, ndays=None, title='[set title]', background='w', fig=None, ax=None, legend=True):
     """
     Generates plots with animal accuracy over training days.
 
@@ -126,7 +127,9 @@ def plot_accuracy(data, animal, ndays=None, title='[set title]', background='w',
     ax.set_facecolor(background)
     
     plt.plot(data, color=cscheme[animal], linewidth=4, marker='o', markersize=10, label=animal)
-    ax.legend(loc=2, fontsize=30, framealpha=1)
+    
+    if legend is True:
+        ax.legend(loc=2, fontsize=30, framealpha=1)
    
     
 def plot_accuracy_by_cue(data_by_cue, animal, cues, ndays, background='w', fig=None, ax=None, rule_ch_line=False):
