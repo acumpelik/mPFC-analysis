@@ -120,6 +120,7 @@ def plot_accuracy(data, animal, ndays=None, title='[set title]', background='w',
     ax.xaxis.set_major_locator(mtick.MultipleLocator(1)) # show each training day on the x-axis
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.0f%%')) # format the accuracy on the y-axis
     
+    ax.axhline(y = 1/2*100, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
     ax.axhline(y = 1/7*100, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
     ax.yaxis.grid(True)
     ax.set_facecolor(background)
@@ -128,7 +129,7 @@ def plot_accuracy(data, animal, ndays=None, title='[set title]', background='w',
     ax.legend(loc=2, fontsize=30, framealpha=1)
    
     
-def plot_accuracy_by_cue(data_by_cue, animal, cues, ndays, background='w', fig=None, ax=None):
+def plot_accuracy_by_cue(data_by_cue, animal, cues, ndays, background='w', fig=None, ax=None, rule_ch_line=False):
     """
     Plots accuracy by cue type, either individually or in multiple subplots.
 
@@ -159,15 +160,21 @@ def plot_accuracy_by_cue(data_by_cue, animal, cues, ndays, background='w', fig=N
     ax.tick_params(labelsize=30)
     ax.xaxis.set_major_locator(mtick.MultipleLocator(1)) # show each training day on the x-axis
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.0f%%')) # format the accuracy on the y-axis
-    ax.axhline(y = 1/7*100, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
+    ax.axhline(y = 1/2*100, c='0.5', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
+    ax.axhline(y = 1/7*100, c='0.5', ls='--', linewidth=3, zorder=0)
     ax.yaxis.grid(True)
     ax.set_facecolor(background)
+    
+    # 
+    if rule_ch_line is True:
+        if animal != 'JC267':
+            ax.axvline(x = rule_change[animal], c='k')
+            ax.text(rule_change[animal], 23, "rule change", rotation=90, fontsize=14)
     
     for cue in cues:
         ax.plot(data_by_cue.loc[:, cue], color=cscheme[cue], linewidth=3, marker='o', markersize=8, label=cue)
     
-    plt.tight_layout()
-   
+    plt.tight_layout()   
     
 def save_fig(title, fmt='png'):
     """
