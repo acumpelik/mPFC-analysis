@@ -38,3 +38,13 @@ cue_names = {
     'cereal' : "#fcbe15",
     'sunflower' : "#d2c28f",
 }
+
+# reward arms: C. H, S
+reward_arms = {
+    'JC240': [3, 7, 1],
+    'JC241': [3, 7, 1],
+    'JC258': [3, 7, 1],
+    'JC267': [3, 7],
+    'JC274': [8, 4, 5],
+    'JC283': [8, 3, 5],
+}
