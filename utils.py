@@ -122,6 +122,7 @@ def plot_accuracy(data, animal, ndays=None, title='[set title]', background='w',
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.0f%%')) # format the accuracy on the y-axis
     
     ax.axhline(y = 1/2*100, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
+    ax.axhline(y = 80, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
     ax.axhline(y = 1/7*100, c='k', ls='--', linewidth=3, zorder=0) # zorder ensures that the line is below the animal accuracy lines
     ax.yaxis.grid(True)
     ax.set_facecolor(background)
