@@ -6,7 +6,7 @@ rule_change = {
     'JC267': 4,
     'JC274': 12,
     'JC283': 14,
-    'JC315': 14, # needs to be edited
+    'JC315': 9,
 }
 
 cscheme = {
