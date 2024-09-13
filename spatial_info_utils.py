@@ -36,8 +36,8 @@ def calculate_cell_stats(animal, session, day_index, arm_number, cell_type):
 
 
 
-    filepath = animal + '-data/' + animal + '-' + day + '/' + animal + '-' + day + '_' + session #Where the .whl, .clu, etc. are located
-    speed_filepath = 'one_drive_data/eight_arm_fig_data_andrea/analysis/' + animal + '-' + day + '/' + animal + '_' + day + '_' + session + '.speed_vladVersion'
+    filepath = '/adata_pool/merged/' + animal + '-' + day + '/' + animal + '-' + day + '_' + session #Where the .whl, .clu, etc. are located
+    speed_filepath = '/home/andrea/Documents/eight_arm_fig_data_andrea/analysis/' + animal + '-' + day + '/' + animal + '_' + day + '_' + session + '.speed_vladVersion'
         #The speed files, stored in the one drive 
             #Note that speed is set to 0 outside of trials, so this file does not work when the animal is running back in the outer ring
     inst_phase, filtered_eegh = phaselocking_utils.get_phase(filepath, tetrode, num_tetrodes)
@@ -55,11 +55,11 @@ def calculate_cell_stats(animal, session, day_index, arm_number, cell_type):
     res_frames = np.arange(res[-1])
 
     #Get correct trials
-    correct_trials_csv = pd.read_csv('eight_arm_new/Andrea_project/Corrected_behavior_vlad/' + animal + '-' + day + '_' + session + '_data.csv')
+    correct_trials_csv = pd.read_csv('/home/andrea/github/eight_arm_new/Andrea_project/Corrected_behavior_vlad/' + animal + '-' + day + '_' + session + '_data.csv')
         #These .csv files of correct trials corresponding to the .trials files are in the github repository
     correct_trials = correct_trials_csv['CorrectBool'].tolist()
     correct_trials = [bool(val) for val in correct_trials]
-    trials_filepath = 'one_drive_data/eight_arm_fig_data_andrea/analysis/' + animal + '-' + day + '/' + animal + '_' + day + '_' + session + '.trials_vladVersion'
+    trials_filepath = '/home/andrea/Documents/eight_arm_fig_data_andrea/analysis/' + animal + '-' + day + '/' + animal + '_' + day + '_' + session + '.trials_vladVersion'
         #These files are in the one drive folder
 
     #Make a filter to keep spikes that happen during correct trials
@@ -73,14 +73,14 @@ def calculate_cell_stats(animal, session, day_index, arm_number, cell_type):
             correct_filter[i] = True
 
     file_ending = '-filter_correct_trials-True-filter_good_cell-Truerate_maps.metrics'
-    file_path = 'analysis_Lizzy/analysis/' + animal + '-' + day + '/' + animal + '-' + day + '-' + cell_type + '-' + arm_number + file_ending
+    file_path = '/home/andrea/Documents/analysis_Lizzy/analysis/' + animal + '-' + day + '/' + animal + '-' + day + '-' + cell_type + '-' + arm_number + file_ending
         # '-' + cell_type + '-' + rewarded_arm
 
     # print(file_path)
     data=json.load(open(file_path))
 
 
-    file = open(animal + '-data/' + animal + '-' + day + '/' + animal + '-' + day + '.des')
+    file = open('/adata_pool/merged/' + animal + '-' + day + '/' + animal + '-' + day + '.des')
     des_raw = file.readlines()
     file.close()
     des = [i.strip('\n') for i in des_raw]
