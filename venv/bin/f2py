@@ -1,4 +1,4 @@
-#!/home/andrea/GitHub/mPFC-analysis/venv/bin/python
+#!/Users/andrea/github/mPFC-analysis/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
